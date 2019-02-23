@@ -1,1 +1,1 @@
-var api_url = "http://118.31.18.127:8080/guang_zhou/"
+var api_url = "http://b.youngmen.cn:8080/guang_zhou/"
