@@ -1,9 +1,8 @@
 $(function () {
     //加载弹出层
-    layui.use(['form','element'],
+    layui.use(['form'],
     function() {
         layer = layui.layer;
-        element = layui.element();
     });
 
 	//初如化背景

@@ -1,0 +1,15 @@
+.layui-form-label{
+	box-sizing: border-box;
+	width: 100px;
+}.layui-input-inline{
+	/*width: 80% !important;*/
+	    margin-right: 0 !important;
+}
+input::-webkit-input-placeholder {
+         /* placeholder颜色  */
+         color: #aab2bd !important;
+     }
+ textarea::-webkit-input-placeholder {
+     /* placeholder颜色  */
+     color: #aab2bd !important;
+ }

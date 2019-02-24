@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>后台登录-X-admin1.1</title>
+    <title>广州门票销售系统</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/font.css">
@@ -12,23 +12,23 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
+    <script type="text/javascript" src="./js/order.js"></script>
 
 </head>
 <body>
     <!-- 顶部开始 -->
     <div class="container">
-        <div class="logo"><a href="./index.html">X-ADMIN V1.1</a></div>
+        <div class="logo"><a href="./index.html">广州旅游门票销售系统</a></div>
         <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
         <ul class="layui-nav right" lay-filter="">
           <li class="layui-nav-item">
             <a href="javascript:;">admin</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a href="">个人信息</a></dd>
-              <dd><a href="">切换帐号</a></dd>
-              <dd><a href="./login.html">退出</a></dd>
+              <dd><a href="javascript:logout();" id="logout">退出</a></dd>
             </dl>
           </li>
-          <li class="layui-nav-item"><a href="/">前台首页</a></li>
+          <!--<li class="layui-nav-item"><a href="/">前台首页</a></li>-->
         </ul>
     </div>
     <!-- 顶部结束 -->
@@ -38,48 +38,24 @@
         <div class="left-nav">
           <div id="side-nav">
             <ul id="nav">
-                <li class="list" current>
+                <!--<li class="list" current>
                     <a href="./index.html">
                         <i class="iconfont">&#xe761;</i>
-                        欢迎页面
+                        首页
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
-                </li>
+                </li>-->
                 <li class="list">
                     <a href="javascript:;">
-                        <i class="iconfont">&#xe70b;</i>
-                        会员管理
+                        <i class="iconfont">&#xe761;</i>
+                        产品
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
-                    <ul class="sub-menu opened">
+                    <ul class="sub-menu">
                         <li>
-                            <a href="member-list.html">
+                            <a href="product.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                会员列表
-                            </a>
-                        </li>
-                        <li>
-                            <a href="member-del.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                会员删除
-                            </a>
-                        </li>
-                        <li>
-                            <a href="member-level.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                等级管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="member-kiss.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                积分管理
-                            </a>
-                        </li>
-                        <li class="current">
-                            <a href="member-view.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                浏览记录
+                                门票管理
                             </a>
                         </li>
                     </ul>
@@ -87,19 +63,19 @@
                 <li class="list" >
                     <a href="javascript:;">
                         <i class="iconfont">&#xe6a3;</i>
-                        分类管理
+                       订单
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
-                    <ul class="sub-menu">
+                    <ul class="sub-menu opened">
                         <li>
-                            <a href="./category.html">
+                            <a href="./order.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                分类列表
+                                订单管理
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="list" >
+                <!--<li class="list" >
                     <a href="javascript:;">
                         <i class="iconfont">&#xe6a3;</i>
                         轮播管理
@@ -194,94 +170,113 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
             </ul>
           </div>
         </div>
         <!-- 左侧菜单结束 -->
         <!-- 右侧主体开始 -->
-        <div class="page-content">
+       <div class="page-content">
           <div class="content">
             <!-- 右侧内容框架，更改从这里开始 -->
             <form class="layui-form xbs" action="" >
                 <div class="layui-form-pane" style="text-align: center;">
                   <div class="layui-form-item" style="display: inline-block;">
-                    <label class="layui-form-label xbs768">日期范围</label>
+              		<label class="layui-form-label xbs768">订单编号</label>
                     <div class="layui-input-inline xbs768">
-                      <input class="layui-input" placeholder="开始日" id="LAY_demorange_s">
-                    </div>
-                    <div class="layui-input-inline xbs768">
-                      <input class="layui-input" placeholder="截止日" id="LAY_demorange_e">
-                    </div>
-                    <div class="layui-input-inline">
-                      <input type="text" name="username"  placeholder="请输入用户名" autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-input-inline" style="width:80px">
-                        <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                      <input class="layui-input" name="productName" placeholder="请输入订单编号" id="id">
                     </div>
                   </div>
+                  <div class="layui-form-item" style="display: inline-block;">
+              		<label class="layui-form-label xbs768">商品名称</label>
+                    <div class="layui-input-inline xbs768">
+                      <input class="layui-input" name="productName" placeholder="请输入商品名称" id="productName">
+                    </div>
+                  </div>
+                  <div class="layui-form-item" style="display: inline-block;">
+              		<label class="layui-form-label xbs768">订单状态</label>
+                    <div class="layui-input-inline xbs768">
+                      <select name="orderStatus" id="type">
+	                      	<option value="">请选择</option>
+                      	<option value="景点门票">门票</option>
+                      	<option value="景点门票">门票</option>
+                      	<option value="景点门票">门票</option>
+                      	<option value="景点门票">门票</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="layui-form-item" style="display: inline-block;">
+              		<label class="layui-form-label xbs768">售后状态</label>
+                    <div class="layui-input-inline xbs768">
+                      	<select name="afterSaleStatus" id="status">
+	                      	<option value="">请选择</option>
+	                      	<option value="景点门票">上架</option>
+	                      	<option value="景点门票">下架</option>
+	                    </select>  
+                    </div>
+                  </div>
+                  <div class="layui-form-item" style="display: inline-block;">
+              		<label class="layui-form-label xbs768">所属区域</label>
+                    <div class="layui-input-inline xbs768">
+                    	<select name="localName" id="localName">
+	                      	<option value="">请选择</option>
+	                      	<option value="景点门票">门票</option>
+	                      	<option value="景点门票">门票</option>
+	                      	<option value="景点门票">门票</option>
+	                      	<option value="景点门票">门票</option>
+	                    </select>  
+                    </div>
+                  </div>
+                  <div class="layui-form-item" style="display: inline-block;">
+              		<div class="layui-input-inline" style="width:80px">
+                        <button type="button" class="layui-btn"  id="seach"  lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                    </div> 
+                  </div>
+                   
                 </div> 
             </form>
-            <xblock><button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon">&#xe640;</i>批量恢复</button><span class="x-right" style="line-height:40px">共有数据：88 条</span></xblock>
+            <xblock><button class="layui-btn" onclick="showWin('添加用户','member-add.html','','880','700')"><i class="layui-icon">&#xe608;</i>添加</button></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
                         <th>
-                            <input type="checkbox" name="" value="">
+                            订单编号
                         </th>
                         <th>
-                            ID
+                            商品名称
+                        </th>
+                        
+                        <th>
+                            订单状态
                         </th>
                         <th>
-                            用户名
+                            年龄属性
                         </th>
                         <th>
-                            ip
+                            单价
                         </th>
-                        <th>
-                            访问时间
+                         <th>
+                            数量
                         </th>
-                        <th>
-                            url
+                         <th>
+                            预定信息
                         </th>
                         <th>
                             操作
                         </th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <input type="checkbox" value="1" name="">
-                        </td>
-                        <td>
-                            1
-                        </td>
-                        <td>
-                            李四
-                        </td>
-                        <td>
-                            192.168.0.2
-                        </td>
-                        <td>
-                            2015.01.16 22:12:24
-                        </td>
-                        <td >
-                            http://x.xuebingsi.com/
-                        </td>
-                        <td class="td-manage">
-                            <a title="删除" href="javascript:;" onclick="view_del(this,'1')" 
-                            style="text-decoration:none">
-                                <i class="layui-icon">&#xe640;</i>
-                            </a>
-                        </td>
-                    </tr>
+                <tbody id="prodictList">
+                    
                 </tbody>
             </table>
             <!-- 右侧内容框架，更改从这里结束 -->
           </div>
+          <div class="layui-pages">
+				<div id="page" class="page"></div>
+			</div>
         </div>
-        <!-- 右侧主体结束 -->
+         <!-- 右侧主体结束 -->
     </div>
     <!-- 中部结束 -->
     <!-- 底部开始 -->
@@ -352,22 +347,59 @@
           
         });
 
-         //批量删除提交
-             function delAll () {
-                layer.confirm('确认要删除吗？',function(index){
-                    //捉到所有被选中的，发异步进行删除
-                    layer.msg('删除成功', {icon: 1});
-                });
-             }
-           
-            /*浏览-删除*/
-            function view_del(obj,id){
-                layer.confirm('确认要删除吗？',function(index){
-                    //发异步删除数据
-                    $(obj).parents("tr").remove();
-                    layer.msg('已删除!',{icon:1,time:1000});
-                });
-            }
+        //批量删除提交
+         function delAll () {
+            layer.confirm('确认要删除吗？',function(index){
+                //捉到所有被选中的，发异步进行删除
+                layer.msg('删除成功', {icon: 1});
+            });
+         }
+         /*用户-添加*/
+        function member_add(title,url,w,h){
+            x_admin_show(title,url,w,h);
+        }
+        /*用户-查看*/
+        function member_show(title,url,id,w,h){
+            x_admin_show(title,url,w,h);
+        }
+
+         /*用户-停用*/
+        function member_stop(obj,id){
+            layer.confirm('确认要停用吗？',function(index){
+                //发异步把用户状态进行更改
+                $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_start(this,id)" href="javascript:;" title="启用"><i class="layui-icon">&#xe62f;</i></a>');
+                $(obj).parents("tr").find(".td-status").html('<span class="layui-btn layui-btn-disabled layui-btn-mini">已停用</span>');
+                $(obj).remove();
+                layer.msg('已停用!',{icon: 5,time:1000});
+            });
+        }
+
+        /*用户-启用*/
+        function member_start(obj,id){
+            layer.confirm('确认要启用吗？',function(index){
+                //发异步把用户状态进行更改
+                $(obj).parents("tr").find(".td-manage").prepend('<a style="text-decoration:none" onClick="member_stop(this,id)" href="javascript:;" title="停用"><i class="layui-icon">&#xe601;</i></a>');
+                $(obj).parents("tr").find(".td-status").html('<span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span>');
+                $(obj).remove();
+                layer.msg('已启用!',{icon: 6,time:1000});
+            });
+        }
+        // 用户-编辑
+        function member_edit (title,url,id,w,h) {
+            x_admin_show(title,url,w,h); 
+        }
+        /*密码-修改*/
+        function member_password(title,url,id,w,h){
+            x_admin_show(title,url,w,h);  
+        }
+        /*用户-删除*/
+        function member_del(obj,id){
+            layer.confirm('确认要删除吗？',function(index){
+                //发异步删除数据
+                $(obj).parents("tr").remove();
+                layer.msg('已删除!',{icon:1,time:1000});
+            });
+        }
         </script>
         <script>
         //百度统计可去掉

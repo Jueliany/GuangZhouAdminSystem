@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>后台登录-X-admin1.1</title>
+	<title>广州门票销售系统</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/font.css">
@@ -12,6 +12,7 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
 
 </head>
 <body>
@@ -23,7 +24,7 @@
           <li class="layui-nav-item">
             <a href="javascript:;">admin</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a href="#" id="logout">退出</a></dd>
+              <dd><a href="javascript:logout();" id="logout">退出</a></dd>
             </dl>
           </li>
           <!--<li class="layui-nav-item"><a href="/">前台首页</a></li>-->
@@ -36,48 +37,24 @@
         <div class="left-nav">
           <div id="side-nav">
             <ul id="nav">
-                <li class="list" current>
+                <!--<li class="list" current>
                     <a href="./index.html">
                         <i class="iconfont">&#xe761;</i>
-                        欢迎页面
+                        首页
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
-                </li>
+                </li>-->
                 <li class="list">
                     <a href="javascript:;">
-                        <i class="iconfont">&#xe70b;</i>
-                        会员管理
+                        <i class="iconfont">&#xe761;</i>
+                        产品
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="member-list.html">
+                            <a href="product.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                会员列表
-                            </a>
-                        </li>
-                        <li>
-                            <a href="member-del.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                会员删除
-                            </a>
-                        </li>
-                        <li>
-                            <a href="member-level.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                等级管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="member-kiss.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                积分管理
-                            </a>
-                        </li>
-                        <li>
-                            <a href="member-view.html">
-                                <i class="iconfont">&#xe6a7;</i>
-                                浏览记录
+                                门票管理
                             </a>
                         </li>
                     </ul>
@@ -85,19 +62,19 @@
                 <li class="list" >
                     <a href="javascript:;">
                         <i class="iconfont">&#xe6a3;</i>
-                        分类管理
+                       订单
                         <i class="iconfont nav_right">&#xe697;</i>
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="./category.html">
+                            <a href="./order.html">
                                 <i class="iconfont">&#xe6a7;</i>
-                                分类列表
+                                订单管理
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="list" >
+                <!--<li class="list" >
                     <a href="javascript:;">
                         <i class="iconfont">&#xe6a3;</i>
                         轮播管理
@@ -192,7 +169,7 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
             </ul>
           </div>
         </div>

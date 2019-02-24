@@ -1,0 +1,53 @@
+{
+	"resultCode": "0",
+	"resultMsg": "操作成功",
+	"data": {
+		"totle": 12,
+		"productInfoList": [{
+			"id": 2,
+			"productName": "动物园",
+			"status": 1,
+			"localName": "广州",
+			"type": "门票",
+			"adultAgePrice": 100.0,
+			"childrenAgePrice": 80.0,
+			"brightSpot": "刺激",
+			"introduce": "好玩",
+			"costIncludes": "园区内项目全包，无自费",
+			"instructions": "即定即用",
+			"pic0": "",
+			"pic1": "",
+			"pic2": ""
+		}, {
+			"id": 3,
+			"productName": "动物园2",
+			"status": 1,
+			"localName": "广州",
+			"type": "门票",
+			"adultAgePrice": 100.0,
+			"childrenAgePrice": 80.0,
+			"brightSpot": "刺激",
+			"introduce": "好玩",
+			"costIncludes": "园区内项目全包，无自费",
+			"instructions": "即定即用",
+			"pic0": "",
+			"pic1": "",
+			"pic2": ""
+		}, {
+			"id": 4,
+			"productName": "动物园3",
+			"status": 1,
+			"localName": "广州",
+			"type": "门票",
+			"adultAgePrice": 100.0,
+			"childrenAgePrice": 80.0,
+			"brightSpot": "刺激",
+			"introduce": "好玩",
+			"costIncludes": "园区内项目全包，无自费",
+			"instructions": "即定即用",
+			"pic0": "",
+			"pic1": "",
+			"pic2": ""
+		}]
+	}
+}

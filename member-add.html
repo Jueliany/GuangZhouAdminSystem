@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/font.css">
 	<link rel="stylesheet" href="./css/xadmin.css">
+	<link rel="stylesheet" href="./css/htmll.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
@@ -22,48 +23,145 @@
           <div class="content">
             <!-- 右侧内容框架，更改从这里开始 -->
             <form class="layui-form">
-                <div class="layui-form-item">
-                    <label for="L_email" class="layui-form-label">
-                        <span class="x-red">*</span>邮箱
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="text" id="L_email" name="email" required="" lay-verify="email"
-                        autocomplete="off" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">
-                        <span class="x-red">*</span>将会成为您唯一的登入名
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <label for="L_username" class="layui-form-label">
-                        <span class="x-red">*</span>昵称
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="text" id="L_username" name="username" required="" lay-verify="nikename"
-                        autocomplete="off" class="layui-input">
+			 	<div class="layui-row layui-rows">
+				    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+				    	<div class="layui-form-item">
+		                    <label for="L_email" class="layui-form-label">
+		                        <span class="x-red">*</span>商品名称
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 700px;" >
+		                        <input type="text" id="productTitle" placeholder="请输入商品名称" name="productName" required="" lay-verify="required"
+		                        autocomplete="off" class="layui-input">
+		                    </div>
+		                </div>
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <label for="L_pass" class="layui-form-label">
-                        <span class="x-red">*</span>密码
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="password" id="L_pass" name="pass" required="" lay-verify="pass"
-                        autocomplete="off" class="layui-input">
+                <div class="layui-row layui-rows">
+				    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>产品类型
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 150px;">
+		                        <select name="type" lay-verify="required" id="type">
+			                      	<option selected value="">请选择</option>
+			                      	<option value="景点门票">门票</option>
+			                      	<option value="景点门票">门票</option>
+			                      	<option value="景点门票">门票</option>
+			                      	<option value="景点门票">门票</option>
+			                    </select>  
+		                    </div>
+		                </div>
                     </div>
-                    <div class="layui-form-mid layui-word-aux">
-                        6到16个字符
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
+		                <div class="layui-form-item">
+		                    <label for="L_pass" class="layui-form-label">
+		                        <span class="x-red">*</span>所属地区
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 150px;">
+		                        <select name="localName" lay-verify="required" id="localName">
+			                      	<option selected value="">请选择</option>
+			                      	<option value="景点门票">门票</option>
+			                      	<option value="景点门票">门票</option>
+			                      	<option value="景点门票">门票</option>
+			                      	<option value="景点门票">门票</option>
+			                    </select>  
+		                    </div>
+		                </div>
+                    </div>
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
+		                <div class="layui-form-item">
+		                    <label for="L_repass" class="layui-form-label">
+		                        <span class="x-red">*</span>状态
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 150px;">
+		                        <select name="status" lay-verify="required" id="localName">
+			                      	<option selected value="">请选择</option>
+			                      	<option value="景点门票">门票</option>
+			                      	<option value="景点门票">门票</option>
+			                      	<option value="景点门票">门票</option>
+			                      	<option value="景点门票">门票</option>
+			                    </select>  
+		                    </div>
+		                </div>
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <label for="L_repass" class="layui-form-label">
-                        <span class="x-red">*</span>确认密码
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="password" id="L_repass" name="repass" required="" lay-verify="repass"
-                        autocomplete="off" class="layui-input">
-                    </div>
+                <div class="layui-row layui-rows">
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>成人票
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 150px;">
+		                        <input type="text" placeholder="请输入成人票价" id="L_email" name="adultAgePrice" required="" lay-verify="required"
+		                        autocomplete="off" class="layui-input"> 
+		                    </div>
+		                </div>
+                   </div>
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>儿童票
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 150px;">
+		                        <input type="text" id="L_email" placeholder="请输入儿童票价" name="childrenAgePrice" required="" lay-verify="required"
+		                        autocomplete="off" class="layui-input"> 
+		                    </div>
+		                </div>
+                   </div>
                 </div>
+                <div class="layui-row layui-rows">
+				    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>产品介绍
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 700px;">
+		                         <textarea name="introduce" lay-verify="required" placeholder="请输入产品介绍" class="layui-textarea"></textarea>
+		                    </div>
+		                </div>
+                   </div>
+                </div>
+                <div class="layui-row layui-rows">
+				    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>使用说明
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 700px;">
+		                         <textarea name="instructions" lay-verify="required" placeholder="请输入使用说明" class="layui-textarea"></textarea>
+		                    </div>
+		                </div>
+                   </div>
+                </div>
+                <div class="layui-row layui-rows">
+				    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>费用包含
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 700px;">
+		                         <textarea name="costIncludes" lay-verify="required" placeholder="请输入费用包含" class="layui-textarea"></textarea>
+		                    </div>
+		                </div>
+                   </div>
+                </div>
+                <div class="layui-row layui-rows">
+				    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>亮点推荐
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 700px;">
+		                         <textarea name="brightSpot" lay-verify="required" placeholder="请输入亮点推荐" class="layui-textarea"></textarea>
+		                    </div>
+		                </div>
+                   </div>
+                </div>
+                <div class="col-sm-6">
+				　　<img id="headPortraitImgShow" src="" alt="" width="160px" height="180px" />
+				　　<input type="file" id="headPortraitUpload" style="margin-top:10px;">
+				</div>
                 <div class="layui-form-item">
                     <label for="L_repass" class="layui-form-label">
                     </label>
@@ -79,6 +177,29 @@
     </div>
     <!-- 中部结束 -->
     <script>
+    	$("#headPortraitUpload").on("change",headPortraitListener);
+
+ /*定义全局变量存贮图片信息*/
+ var base64head="";
+
+/*头像上传监听*/
+function headPortraitListener(e) {
+    var img = document.getElementById('headPortraitImgShow');
+      if(window.FileReader) {
+          var file  = e.target.files[0];
+          var reader = new FileReader();
+          if (file && file.type.match('image.*')) {
+              reader.readAsDataURL(file);
+          } else {
+              img.css('display', 'none');
+              img.attr('src', '');
+          }
+          reader.onloadend = function (e) {
+          img.setAttribute('src', reader.result);
+          base64head = reader.result;
+        }
+      }
+}
     //百度统计可去掉
     var _hmt = _hmt || [];
     (function() {

@@ -425,3 +425,40 @@ xblock{
 	}
 }
 
+.layui-table{
+	background-color: rgba(0,0,0,0.25) !important;
+	color: #fff;
+}
+.layui-table thead tr {
+    background-color: rgba(0,0,0,0.4);
+    }
+.td-manage a{
+	color: #fff !important;
+}
+.td-manage a:hover{
+	color: #aaa !important;
+}
+.layui-table tbody tr:hover{
+	background-color: rgba(0,0,0,0.4);
+}
+.layui-anim{
+	background-color: rgba(0, 0, 0, 0.4) !important;
+}
+.layui-anim dd:hover{
+	background-color: rgba(0,0,0,0.6) !important;
+}
+.layui-select-tips{
+	background-color: rgba(0,0,0,0.4);
+}
+.page{
+	text-align: center;
+}
+.page *{
+	background-color: transparent !important;
+}
+/*.page button{
+	background-color: rgba(0,0,0,0.25) !important;
+}
+.page a{
+	background-color: rgba(0,0,0,0.25) !important;
+}*/
