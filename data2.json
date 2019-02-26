@@ -1,0 +1,42 @@
+{
+	"resultCode": "0",
+	"resultMsg": "操作成功",
+	"data": {
+		"orderInfo": {
+			"productView": {
+				"id": 1,
+				"productName": "长隆欢乐世界",
+				"status": 1,
+				"localName": "广州",
+				"type": "门票",
+				"adultAgePrice": 250.0,
+				"childrenAgePrice": 200.0,
+				"brightSpot": "刺激",
+				"introduce": "好玩",
+				"costIncludes": "园区内项目全包，无自费",
+				"instructions": "即定即用",
+				"pic0": "",
+				"pic1": "",
+				"pic2": "",
+				"saleSum": 0
+			},
+			"orderView": {
+				"id": 1,
+				"orderNum": "GZ15506429583394216",
+				"productId": 1,
+				"num": 1,
+				"orderStatus": 3,
+				"afterSaleStatus": 0,
+				"guestName": "陈三峰",
+				"guestPhone": "15622335722",
+				"guestEmail": "42124435@qq.com",
+				"adultAgePrice": 200.0,
+				"childrenAgePrice": 0.0,
+				"remark": "测试订单",
+				"createTime": 1550635758000,
+				"createUserName": "admin",
+				"checkCode": ""
+			}
+		}
+	}
+}

@@ -159,7 +159,8 @@ body{
 
 }
 .layui-form-pane .login-form{
-	width: 25px;
+	width: 55px;
+	height: 38px;
 }
 .layui-form-pane .layui-form-label i{
 	color: #fff;
@@ -455,6 +456,9 @@ xblock{
 }
 .page *{
 	background-color: transparent !important;
+}
+.logo a{
+	color: #fff !important;
 }
 /*.page button{
 	background-color: rgba(0,0,0,0.25) !important;

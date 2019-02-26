@@ -145,7 +145,7 @@ $(function () {
     w       弹出层宽度（缺省调默认值）
     h       弹出层高度（缺省调默认值）
 */
-function x_admin_show(title,url,w,h){
+function x_admin_show(title,url,id,w,h){
     if (title == null || title == '') {
         title=false;
     };
@@ -166,7 +166,13 @@ function x_admin_show(title,url,w,h){
         shadeClose: true,
         shade:0.4,
         title: title,
-        content: url
+        content: url,
+        success: function(layero, index) {
+				//向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
+				var body = layer.getChildFrame('body', index);
+				body.contents().find("#dataId").val(id);
+				console.log(body.contents().find("#dataId").val());
+			},
     });
 }
 

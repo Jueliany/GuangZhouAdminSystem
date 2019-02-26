@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>后台登录-X-admin1.1</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<title>后台登录-X-admin1.1</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./css/font.css">
-    <link rel="stylesheet" href="./css/xadmin.css">
+	<link rel="stylesheet" href="./css/xadmin.css">
+	<link rel="stylesheet" href="./css/htmll.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.jquery.min.js"></script>
     <script src="./lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./js/xadmin.js"></script>
+    <script type="text/javascript" src="./js/common.js"></script>
 
 </head>
 <body>
@@ -21,60 +23,173 @@
         <div class="page-content">
           <div class="content">
             <!-- 右侧内容框架，更改从这里开始 -->
+            <input id="dataId" name="id"  type="text"/>
+    	  
             <form class="layui-form">
-                <div class="layui-form-item">
-                    <label for="L_email" class="layui-form-label">
-                        邮箱
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="text" id="L_email" name="email" required lay-verify="email"
-                        autocomplete="off" value="113664000@qq.com" class="layui-input">
-                    </div>
-                    <div class="layui-form-mid layui-word-aux">
-                        如果您在邮箱已激活的情况下，变更了邮箱，需
-                        <a href="/user/activate/" style="font-size: 12px; color: #4f99cf;">
-                            重新验证邮箱
-                        </a>
-                        。
+			 	<div class="layui-row layui-rows">
+				    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+				    	<div class="layui-form-item">
+		                    <label for="L_email" class="layui-form-label">
+		                        <span class="x-red">*</span>商品名称
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 700px;" >
+		                        <input type="text" id="productTitle" placeholder="请输入商品名称" name="productName" required="" lay-verify="required"
+		                        autocomplete="off" class="layui-input">
+		                    </div>
+		                </div>
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <label for="L_username" class="layui-form-label">
-                        昵称
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="text" id="L_username" name="username" required lay-verify="required"
-                        autocomplete="off" value="zhibinm" class="layui-input">
+                <div class="layui-row layui-rows">
+				    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>产品类型
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 150px;">
+		                        <select name="type" lay-verify="required" id="type">
+			                      	<option selected value="">请选择</option>
+			                      	<option value="景点">景点</option>
+			                      	<option value="游乐场">游乐场</option>
+			                      	<option value="当地体验">当地体验</option>
+			                    </select>  
+		                    </div>
+		                </div>
                     </div>
-                    <div class="layui-inline">
-                        <div class="layui-input-inline">
-                            <input type="radio" name="sex" value="0" checked title="男">
-                            <input type="radio" name="sex" value="1" title="女">
-                        </div>
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
+		                <div class="layui-form-item">
+		                    <label for="L_pass" class="layui-form-label">
+		                        <span class="x-red">*</span>所属地区
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 150px;">
+		                        <select name="localName" lay-verify="required" id="localName">
+			                      	<option selected value="">请选择</option>
+			                      	<option value="越秀区">越秀区</option>
+			                      	<option value="荔湾区">荔湾区</option>
+			                      	<option value="海珠区">海珠区</option>
+			                      	<option value="天河区">天河区</option>
+			                      	<option value="白云区">白云区</option>
+			                      	<option value="黄埔区">黄埔区</option>
+			                      	<option value="番禺区">番禺区</option>
+			                      	<option value="花都区">花都区</option>
+			                      	<option value="南沙区">南沙区</option>
+			                      	<option value="增城区">增城区</option>
+			                      	<option value="从化区">从化区</option>
+			                    </select>  
+		                    </div>
+		                </div>
+                    </div>
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
+		                <div class="layui-form-item">
+		                    <label for="L_repass" class="layui-form-label">
+		                        <span class="x-red">*</span>状态
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 150px;">
+		                        <select name="status" lay-verify="required" id="localName">
+			                      	<option selected value="">请选择</option>
+			                      	<option value="1">上架</option>
+			                      	<option value="0">下架</option>
+			                    </select>  
+		                    </div>
+		                </div>
                     </div>
                 </div>
-                <div class="layui-form-item">
-                    <label for="L_city" class="layui-form-label">
-                        城市
-                    </label>
-                    <div class="layui-input-inline">
-                        <input type="text" id="L_city" name="city" autocomplete="off" value="广州"
-                        class="layui-input">
-                    </div>
+                <div class="layui-row layui-rows">
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>成人票
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 150px;">
+		                        <input type="text" placeholder="请输入成人票价" id="L_email" name="adultAgePrice" required="" lay-verify="required"
+		                        autocomplete="off" class="layui-input"> 
+		                    </div>
+		                </div>
+                   </div>
+                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>儿童票
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 150px;">
+		                        <input type="text" id="L_email" placeholder="请输入儿童票价" name="childrenAgePrice" required="" lay-verify="required"
+		                        autocomplete="off" class="layui-input"> 
+		                    </div>
+		                </div>
+                   </div>
                 </div>
-                <div class="layui-form-item layui-form-text">
-                    <label for="L_sign" class="layui-form-label">
-                        签名
-                    </label>
-                    <div class="layui-input-block">
-                        <textarea placeholder="随便写些什么刷下存在感" id="L_sign" name="sign" autocomplete="off"
-                        class="layui-textarea" style="height: 80px;"></textarea>
-                    </div>
+                <div class="layui-row layui-rows">
+				    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>产品介绍
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 700px;">
+		                         <textarea name="introduce" lay-verify="required" placeholder="请输入产品介绍" class="layui-textarea"></textarea>
+		                    </div>
+		                </div>
+                   </div>
                 </div>
+                <div class="layui-row layui-rows">
+				    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>使用说明
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 700px;">
+		                         <textarea name="instructions" lay-verify="required" placeholder="请输入使用说明" class="layui-textarea"></textarea>
+		                    </div>
+		                </div>
+                   </div>
+                </div>
+                <div class="layui-row layui-rows">
+				    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>费用包含
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 700px;">
+		                         <textarea name="costIncludes" lay-verify="required" placeholder="请输入费用包含" class="layui-textarea"></textarea>
+		                    </div>
+		                </div>
+                   </div>
+                </div>
+                <div class="layui-row layui-rows">
+				    <div class="layui-col-xs12 layui-col-sm12 layui-col-md12 layui-col-lg12">
+		                <div class="layui-form-item">
+		                    <label for="L_username" class="layui-form-label">
+		                        <span class="x-red">*</span>亮点推荐
+		                    </label>
+		                    <div class="layui-input-inline" style="width: 700px;">
+		                         <textarea name="brightSpot" lay-verify="required" placeholder="请输入亮点推荐" class="layui-textarea"></textarea>
+		                    </div>
+		                </div>
+                   </div>
+                </div>
+                <div class="layui-row layui-rows">
+                	<label for="L_username" class="layui-form-label" style="width: 100px;">
+	                        <span class="x-red">*</span>产品图片
+	                </label>
+                	<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
+				    	
+				    	<img id="headPortraitImgShow1" src="images/pic.jpg" alt="" width="160px" height="90px" />
+				　　		<input type="file" id="headPortraitUpload1" style="margin-top:10px;">
+				    </div>
+                	<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
+				    	<img id="headPortraitImgShow2" src="images/pic.jpg" alt="" width="160px" height="90px" />
+				　　		<input type="file" id="headPortraitUpload2" style="margin-top:10px;">
+				    </div>
+                	<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
+				    	<img id="headPortraitImgShow3" src="images/pic.jpg" alt="" width="160px" height="90px" />
+				　　		<input type="file" id="headPortraitUpload3" style="margin-top:10px;">
+				    </div>
+                </div>
+                <div class="col-sm-6">
+				　　
+				</div>
                 <div class="layui-form-item">
-                    <label for="L_sign" class="layui-form-label">
+                    <label for="L_repass" class="layui-form-label">
                     </label>
-                    <button class="layui-btn" key="set-mine" lay-filter="save" lay-submit>
+                    <button  class="layui-btn" lay-filter="update" lay-submit >
                         保存
                     </button>
                 </div>
@@ -86,6 +201,158 @@
     </div>
     <!-- 中部结束 -->
     <script>
+    	$("#headPortraitUpload1").on("change",headPortraitListener1);
+		 /*定义全局变量存贮图片信息*/
+		 var base64head1="";
+		function headPortraitListener1(e) {
+		    var img1 = document.getElementById('headPortraitImgShow1');
+		      if(window.FileReader) {
+		          var file  = e.target.files[0];
+		          var reader = new FileReader();
+		          if (file && file.type.match('image.*')) {
+		              reader.readAsDataURL(file);
+		          } else {
+		              img1.css('display', 'none');
+		              img1.attr('src', '');
+		          }
+		          reader.onloadend = function (e) {
+		          img1.setAttribute('src', reader.result);
+		          base64head1 = reader.result;
+		          console.log(base64head1)
+		        }
+		      }
+		}
+		$("#headPortraitUpload2").on("change",headPortraitListener2);
+		 /*定义全局变量存贮图片信息*/
+		 var base64head2="";
+		function headPortraitListener2(e) {
+		    var img2 = document.getElementById('headPortraitImgShow2');
+		      if(window.FileReader) {
+		          var file  = e.target.files[0];
+		          var reader = new FileReader();
+		          if (file && file.type.match('image.*')) {
+		              reader.readAsDataURL(file);
+		          } else {
+		              img2.css('display', 'none');
+		              img2.attr('src', '');
+		          }
+		          reader.onloadend = function (e) {
+		          img2.setAttribute('src', reader.result);
+		          base64head2 = reader.result;
+		        }
+		      }
+		}
+		$("#headPortraitUpload3").on("change",headPortraitListener3);
+		 /*定义全局变量存贮图片信息*/
+		 var base64head3="";
+		function headPortraitListener3(e) {
+		    var img3 = document.getElementById('headPortraitImgShow3');
+		      if(window.FileReader) {
+		          var file  = e.target.files[0];
+		          var reader = new FileReader();
+		          if (file && file.type.match('image.*')) {
+		              reader.readAsDataURL(file);
+		          } else {
+		              img3.css('display', 'none');
+		              img3.attr('src', '');
+		          }
+		          reader.onloadend = function (e) {
+		          img3.setAttribute('src', reader.result);
+		          base64head3 = reader.result;
+		        }
+		      }
+		}
+			console.log($("#dataId").val())
+		layui.use(['form','layer', 'jquery','laydate'], function(){
+          	var form = layui.form,
+				$ = layui.jquery,
+				laydate = layui.laydate,
+          		layer = layui.layer;
+			
+			var postData = {};
+			postData.id = $("#dataId").val();
+			console.log($("#dataId").val())
+			$.ajax({
+	            url: api_url+"product/queryProductInfo",
+				type: "post",
+				contentType: "application/json;charset=utf-8",
+				data: JSON.stringify(postData),
+				datatype: "json",
+				xhrFields: {
+	            	withCredentials: true
+	     		},
+				crossDomain: true,
+				async: true,
+				beforeSend: function (request) {
+		          indexInit = layer.load(2, {shade: [0.1,'#fff']});
+		        },
+				success: function (result) {
+					console.log(result)
+		        	if(result.resultCode==0){
+		        		
+		        		layer.close(indexInit);
+		        	}
+		        	else{
+		        		layer.close(indexInit);
+		        	}
+		        }
+	        });
+			
+			
+			
+	        //监听提交
+	        form.on('submit(update)', function(data){
+//	            console.log(data.field);
+				var indexLoad = layer.load(2); 
+	            var postData = data.field;
+	            if(base64head1!=""){
+	            	postData.pic0 = base64head1;
+	            }
+	            if(base64head2!=""){
+	            	postData.pic1 = base64head2;
+	            }
+	            if(base64head3!=""){
+	            	postData.pic2 = base64head3;
+	            }
+	            console.log(JSON.stringify(postData))
+	            $.ajax({
+		            url: api_url+"product/insertProduct",
+					type: "post",
+					contentType: "application/json;charset=utf-8",
+					data: JSON.stringify(postData),
+					datatype: "json",
+					xhrFields: {
+		            	withCredentials: true
+		     		},
+					crossDomain: true,
+					async: true,
+					beforeSend: function (request) {
+			          indexInit = layer.load(2, {shade: [0.1,'#fff']});
+			        },
+					success: function (result) {
+						console.log(result)
+			        	if(result.resultCode==0){
+			        		layer.msg('添加成功!', {
+								icon: 1,
+								time: 2000
+							}, function(){
+								// 获得frame索引
+				                var index = parent.layer.getFrameIndex(window.name);
+				                //关闭当前frame
+				                parent.layer.close(index);
+							});
+			        		layer.close(indexInit);
+			        	}
+			        	else{
+			        		layer.close(indexInit);
+			        	}
+			        }
+		        });
+	            return false;
+	        }); 
+	        
+        });
+		
     //百度统计可去掉
     var _hmt = _hmt || [];
     (function() {

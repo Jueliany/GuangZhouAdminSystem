@@ -102,10 +102,9 @@
                     <div class="layui-input-inline xbs768">
                       <select name="type" id="type">
 	                      	<option value="">请选择</option>
-                      	<option value="景点门票">门票</option>
-                      	<option value="景点门票">门票</option>
-                      	<option value="景点门票">门票</option>
-                      	<option value="景点门票">门票</option>
+	                      	<option value="景点">景点</option>
+	                      	<option value="游乐场">游乐场</option>
+	                      	<option value="演出体验">演出体验</option>
                       </select>
                     </div>
                   </div>
@@ -124,10 +123,17 @@
                     <div class="layui-input-inline xbs768">
                     	<select name="localName" id="localName">
 	                      	<option value="">请选择</option>
-	                      	<option value="景点门票">门票</option>
-	                      	<option value="景点门票">门票</option>
-	                      	<option value="景点门票">门票</option>
-	                      	<option value="景点门票">门票</option>
+	                      	<option value="越秀区">越秀区</option>
+	                      	<option value="荔湾区">荔湾区</option>
+	                      	<option value="海珠区">海珠区</option>
+	                      	<option value="天河区">天河区</option>
+	                      	<option value="白云区">白云区</option>
+	                      	<option value="黄埔区">黄埔区</option>
+	                      	<option value="番禺区">番禺区</option>
+	                      	<option value="花都区">花都区</option>
+	                      	<option value="南沙区">南沙区</option>
+	                      	<option value="增城区">增城区</option>
+	                      	<option value="从化区">从化区</option>
 	                    </select>  
                     </div>
                   </div>
@@ -139,7 +145,7 @@
                    
                 </div> 
             </form>
-            <xblock><button class="layui-btn" onclick="showWin('添加用户','member-add.html','','880','700')"><i class="layui-icon">&#xe608;</i>添加</button></xblock>
+            <xblock><button class="layui-btn" onclick="showWin('添加','member-add.html','','880','700')"><i class="layui-icon">&#xe608;</i>添加</button></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -225,11 +231,11 @@
          }
          /*用户-添加*/
         function member_add(title,url,w,h){
-            x_admin_show(title,url,w,h);
+            x_admin_show(title,url,"",w,h);
         }
         /*用户-查看*/
         function member_show(title,url,id,w,h){
-            x_admin_show(title,url,w,h);
+            x_admin_show(title,url,id,w,h);
         }
 
          /*用户-停用*/
