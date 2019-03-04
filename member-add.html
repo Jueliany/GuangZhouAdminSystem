@@ -271,14 +271,28 @@
 //	            console.log(data.field);
 				var indexLoad = layer.load(2); 
 	            var postData = data.field;
+	            postData.onlineToken = sessionId;
+	            postData.imageModelList = [];
 	            if(base64head1!=""){
-	            	postData.pic0 = base64head1;
+	            	var img = {};
+	            	var base64 = base64head1.split(";base64,");
+	            	img.baseName = base64[1];
+	            	img.typeName = base64[0].split("image/")[1];
+	            	postData.imageModelList.push(img);
 	            }
 	            if(base64head2!=""){
-	            	postData.pic1 = base64head2;
+	            	var img = {};
+	            	var base64 = base64head2.split(";base64,");
+	            	img.baseName = base64[1];
+	            	img.typeName = base64[0].split("image/")[1];
+	            	postData.imageModelList.push(img);
 	            }
 	            if(base64head3!=""){
-	            	postData.pic2 = base64head3;
+	            	var img = {};
+	            	var base64 = base64head3.split(";base64,");
+	            	img.baseName = base64[1];
+	            	img.typeName = base64[0].split("image/")[1];
+	            	postData.imageModelList.push(img);
 	            }
 	            console.log(JSON.stringify(postData))
 	            $.ajax({

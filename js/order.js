@@ -12,16 +12,14 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 		getData(1)
 	})
 	function getData(pageNum){
-		console.log(sessionId)
-		sessionId = 1;
 		if(sessionId != 'undefined' && sessionId != undefined){
 			var postData = {};
-			console.log(1)
 			postData.pageNum = pageNum;
 			postData.pageSize = pageSize;
+			postData.onlineToken = sessionId;
 			
 			if($("#id").val() != ""){
-					postData.id = $("#id").val() ;
+					postData.orderNum = $("#id").val() ;
 				}
 			if($("#productName").val() != ""){
 					postData.productName = $("#productName").val() ;
@@ -29,16 +27,16 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 			if($("#status").val() != ""){
 					postData.status = $("#status").val() ;
 				}
-			if($("#localName").val() != ""){
-					postData.localName = $("#localName").val() ;
+			if($("#orderStatus").val() != ""){
+					postData.orderStatus = $("#orderStatus").val() ;
 				}
 			if($("#type").val() != ""){
 					postData.type = $("#type").val() ;
 				}
 			$.ajax({
-				url: api_url+"product/productInfoList",
-				url: "data.json",
-				type: "get",
+				url: api_url+"order/queryOrderInfoList",
+//				url: "data.json",
+				type: "post",
 				contentType: "application/json;charset=utf-8",
 				data: JSON.stringify(postData),
 				datatype: "jsonp",
@@ -55,7 +53,15 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 		        	if(result.resultCode==0){
 		        		$("#prodictList").html(getDataHtml(result.data.orderInfoList));
 		        		$(".saleAfter").click(function(){
-		        			saleAfter_win("售后退款",getSaleAfterHtml(),400,250)
+		        			var id = this.dataset.id;
+		        			var ind = saleAfter_win("售后退款",getSaleAfterHtml(this.dataset.text),400,250);
+		        			$("#yes").click(function(){
+		        				saleAfterRepoet(id,2,ind)
+		        			});
+		        			$("#no").click(function(){
+		        				saleAfterRepoet(id,3,ind)
+		        			});
+
 		        		})
 		        		layer.close(indexInit);
 						if(pageNum == 1){
@@ -109,14 +115,15 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 	        	邮箱:`+item.orderView.guestEmail+`<br>
 	        	备注:`+item.orderView.remark+`
 	        </td>
-	        <td class="td-manage">
-	            <a style="text-decoration:none" class="saleAfter" href="javascript:;" title="售后">
-	                <i class="layui-icon">&#xe65e;</i>
-	            </a>
-	            <a title="编辑预定信息" href="javascript:;" onclick="showWin('编辑','member-edit.html','`+item.id+`','600','510')"
-	            class="ml-5" style="text-decoration:none">
-	                <i class="layui-icon">&#xe642;</i>
-	            </a>
+	        <td class="td-manage">`;
+	        	if(item.orderView.afterSaleStatus == 1){
+	        		htmlStr += `<a data-id="`+ item.orderView.id +`" style="text-decoration:none" data-text="`+ item.orderView.afterSaleRemark +`" class="saleAfter" href="javascript:;" title="售后">
+		                <i class="layui-icon">&#xe65e;</i>
+		            </a>`;
+	        	}
+		            
+	            
+	            htmlStr += `
 	            </td>
 	            </tr>`;
 		}
@@ -129,6 +136,8 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 			case 1:return "已付款";
 			case 2:return "已使用";
 			case 3:return "已取消";
+			case 4:return "退款中";
+			case 5:return "已退款";
 		}
 	}
 	
@@ -155,7 +164,7 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 	    return index;
 	}
 	
-	function getSaleAfterHtml(data){
+	function getSaleAfterHtml(text){
 		var htmlStr = "";
 		htmlStr +=`
 			<form class="layui-form">
@@ -166,16 +175,16 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 		                        <span class="x-red">*</span>退款理由
 		                    </label>
 		                    <div class="layui-input-inline" style="width: 60%;">
-		                         <textarea name="brightSpot" lay-verify="required" placeholder="" class="layui-textarea">12313132</textarea>
+		                         <textarea name="brightSpot" lay-verify="required" placeholder="" class="layui-textarea">`+ text +`</textarea>
 		                    </div>
 		                </div>
                    </div>
                 </div>
 				<div class="layui-form-item" style="margin-left:100px;">
-		             <button  class="layui-btn" lay-filter="add" lay-submit >
+		             <button  class="layui-btn" id="yes" type="button" >
 		                        退款
                     </button>
-                    <button  class="layui-btn" lay-filter="add" lay-submit >
+                    <button  class="layui-btn" id="no" type="button" >
 		                        拒绝
                     </button>
                 </div>
@@ -183,4 +192,50 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 		`;
 		return htmlStr;
 	}
+	
+	function saleAfterRepoet(id,type,index){
+		var postData = {};
+			postData.id = id;
+			postData.afterSaleStatus = type;
+			if(type==1){
+				postData.orderStatus = 1;
+			}else{
+				postData.orderStatus = 5;
+			}
+			postData.onlineToken = sessionId;
+			$.ajax({
+	            url: api_url+"order/updateOrderStatus",
+				type: "post",
+				contentType: "application/json;charset=utf-8",
+				data: JSON.stringify(postData),
+				datatype: "json",
+				xhrFields: {
+	            	withCredentials: true
+	     		},
+				crossDomain: true,
+				async: true,
+				beforeSend: function (request) {
+		          indexInit = layer.load(2, {shade: [0.1,'#fff']});
+		        },
+				success: function (result) {
+		        	if(result.resultCode==0){
+		        		layer.close(indexInit);
+		        		layer.msg(result.resultMsg, {
+								  	time: 2000,
+								  	anim: 1
+								});
+								getData(1);
+		        		layer.close(index);
+		        	}
+		        	else{
+		        		layer.msg(result.resultMsg, {
+								  	time: 2000,
+								  	anim: 6
+								});
+		        		layer.close(indexInit);
+		        	}
+		        }
+	        });
+	}
+
 });

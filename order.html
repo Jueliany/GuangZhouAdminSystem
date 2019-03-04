@@ -23,8 +23,8 @@
         <div class="open-nav"><i class="iconfont">&#xe699;</i></div>
         <ul class="layui-nav right" lay-filter="">
           <li class="layui-nav-item">
-            <a href="javascript:;">admin</a>
-            <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <a class="admin" href="javascript:;">admin</a>
+            <dl class="logout"> <!-- 二级菜单 -->
               <dd><a href="javascript:logout();" id="logout">退出</a></dd>
             </dl>
           </li>
@@ -198,10 +198,10 @@
                     <div class="layui-input-inline xbs768">
                       <select name="orderStatus" id="type">
 	                      	<option value="">请选择</option>
-                      	<option value="景点门票">门票</option>
-                      	<option value="景点门票">门票</option>
-                      	<option value="景点门票">门票</option>
-                      	<option value="景点门票">门票</option>
+                      	<option value="0">待付款</option>
+                      	<option value="1">已付款</option>
+                      	<option value="2">已使用</option>
+                      	<option value="3">已取消</option>
                       </select>
                     </div>
                   </div>
@@ -210,23 +210,14 @@
                     <div class="layui-input-inline xbs768">
                       	<select name="afterSaleStatus" id="status">
 	                      	<option value="">请选择</option>
-	                      	<option value="景点门票">上架</option>
-	                      	<option value="景点门票">下架</option>
+	                      	<option value="0">无售后</option>
+	                      	<option value="1">未退款</option>
+	                      	<option value="2">已退款</option>
+	                      	<option value="3">已拒绝</option>
 	                    </select>  
                     </div>
                   </div>
-                  <div class="layui-form-item" style="display: inline-block;">
-              		<label class="layui-form-label xbs768">所属区域</label>
-                    <div class="layui-input-inline xbs768">
-                    	<select name="localName" id="localName">
-	                      	<option value="">请选择</option>
-	                      	<option value="景点门票">门票</option>
-	                      	<option value="景点门票">门票</option>
-	                      	<option value="景点门票">门票</option>
-	                      	<option value="景点门票">门票</option>
-	                    </select>  
-                    </div>
-                  </div>
+                  
                   <div class="layui-form-item" style="display: inline-block;">
               		<div class="layui-input-inline" style="width:80px">
                         <button type="button" class="layui-btn"  id="seach"  lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
@@ -264,7 +255,7 @@
                             预定信息
                         </th>
                         <th>
-                            操作
+                            售后
                         </th>
                     </tr>
                 </thead>

@@ -13,13 +13,13 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 	})
 	function getData(pageNum){
 		console.log(sessionId)
-		sessionId = 1;
+//		sessionId = 1;
 		if(sessionId != 'undefined' && sessionId != undefined){
 			var postData = {};
 			console.log(1)
 			postData.pageNum = pageNum;
 			postData.pageSize = pageSize;
-			
+			postData.onlineToken = sessionId;
 			if($("#id").val() != ""){
 					postData.id = $("#id").val() ;
 				}
@@ -81,7 +81,7 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 		        	}
 		        	else{
 		        		layer.close(indexInit);
-		        		common.msg(result.resultMsg);
+		        		layer.msg(result.resultMsg);
 		        	}
 		        }
 			});
@@ -120,6 +120,7 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 			
 			var postData = {};
 			postData.id = id;
+			postData.onlineToken = sessionId;
 			$.ajax({
 	            url: api_url+"product/queryProductInfo",
 				type: "post",
@@ -335,15 +336,15 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 		                </label>
 	                	<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
 					    	
-					    	<img id="headPortraitImgShow1" src="`+data.pic0+`" alt="" width="160px" height="90px" />
+					    	<img id="headPortraitImgShow1" src="`+(api_url+"product/getPic?fileName="+data.pic0)+`" alt="" width="160px" height="90px" />
 					　　		<input type="file" id="headPortraitUpload1" style="margin-top:10px;">
 					    </div>
 	                	<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
-					    	<img id="headPortraitImgShow2" src="`+data.pic1+`" alt="" width="160px" height="90px" />
+					    	<img id="headPortraitImgShow2" src="`+(api_url+"product/getPic?fileName="+data.pic1)+`" alt="" width="160px" height="90px" />
 					　　		<input type="file" id="headPortraitUpload2" style="margin-top:10px;">
 					    </div>
 	                	<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
-					    	<img id="headPortraitImgShow3" src="`+data.pic2+`" alt="" width="160px" height="90px" />
+					    	<img id="headPortraitImgShow3" src="`+(api_url+"product/getPic?fileName="+data.pic2)+`" alt="" width="160px" height="90px" />
 					　　		<input type="file" id="headPortraitUpload3" style="margin-top:10px;">
 					    </div>
 	                </div>
@@ -434,17 +435,33 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 	            console.log(data.field);
 				var indexLoad = layer.load(2); 
 	            var postData = data.field;
+	            postData.imageModelList = [];
+	            postData.onlineToken = sessionId;
 	            if(base64head1!=""){
-	            	postData.pic0 = base64head1;
+	            	var img = {};
+	            	var base64 = base64head1.split(";base64,");
+	            	img.baseName = base64[1];
+	            	img.typeName = base64[0].split("image/")[1];
+	            	img.number = 0;
+	            	postData.imageModelList.push(img);
 	            }
 	            if(base64head2!=""){
-	            	postData.pic1 = base64head2;
+	            	var img = {};
+	            	var base64 = base64head2.split(";base64,");
+	            	img.baseName = base64[1];
+	            	img.typeName = base64[0].split("image/")[1];
+	            	img.number = 1;
+	            	postData.imageModelList.push(img);
 	            }
 	            if(base64head3!=""){
-	            	postData.pic2 = base64head3;
+	            	var img = {};
+	            	var base64 = base64head3.split(";base64,");
+	            	img.baseName = base64[1];
+	            	img.typeName = base64[0].split("image/")[1];
+	            	img.number = 2;
+	            	postData.imageModelList.push(img);
 	            }
 	            postData.id = id;
-	            console.log(JSON.stringify(postData))
 	            $.ajax({
 		            url: api_url+"product/updateProduct",
 					type: "post",
@@ -461,12 +478,12 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 			        },
 					success: function (result) {
 						console.log(result)
+						layer.close(indexs);
 			        	if(result.resultCode==0){
 			        		layer.msg('更新成功!', {
 								icon: 1,
 								time: 1000
 							}, function(){
-								layer.close(indexs);
 								getData(1)
 							});
 			        		layer.close(indexInit);
@@ -476,6 +493,7 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 			        	}
 			        }
 		        });
+	            
 	            return false;
 	        }); 
 		}

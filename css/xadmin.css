@@ -466,3 +466,24 @@ xblock{
 .page a{
 	background-color: rgba(0,0,0,0.25) !important;
 }*/
+.layui-nav{
+	background-color: transparent !important;
+}
+.logout{
+	display: none;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    min-width: 100%;
+    line-height: 36px;
+    padding: 5px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,.12);
+    border: 1px solid #d2d2d2;
+    background-color: rgba(222, 222, 222, 0.5);
+    z-index: 100;
+    border-radius: 2px;
+    white-space: nowrap;
+}
+.right:hover *{
+	display: block;
+} 
