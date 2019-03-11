@@ -336,15 +336,17 @@ layui.use([ 'jquery','form','layer','laypage'], function() {
 		                </label>
 	                	<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
 					    	
-					    	<img id="headPortraitImgShow1" src="`+(api_url+"product/getPic?fileName="+data.pic0)+`" alt="" width="160px" height="90px" />
+					    	<img id="headPortraitImgShow1" src="`+
+					    	(data.pic0.indexOf("http://")>=0?data.pic0:api_url+"product/getPic?fileName="+data.pic0)
+					    	+`" alt="" width="160px" height="90px" />
 					　　		<input type="file" id="headPortraitUpload1" style="margin-top:10px;">
 					    </div>
 	                	<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
-					    	<img id="headPortraitImgShow2" src="`+(api_url+"product/getPic?fileName="+data.pic1)+`" alt="" width="160px" height="90px" />
+					    	<img id="headPortraitImgShow2" src="`+(data.pic1.indexOf("http://")>=0?data.pic1:api_url+"product/getPic?fileName="+data.pic1)+`" alt="" width="160px" height="90px" />
 					　　		<input type="file" id="headPortraitUpload2" style="margin-top:10px;">
 					    </div>
 	                	<div class="layui-col-xs3 layui-col-sm3 layui-col-md3 layui-col-lg3">
-					    	<img id="headPortraitImgShow3" src="`+(api_url+"product/getPic?fileName="+data.pic2)+`" alt="" width="160px" height="90px" />
+					    	<img id="headPortraitImgShow3" src="`+(data.pic2.indexOf("http://")>=0?data.pic2:api_url+"product/getPic?fileName="+data.pic2)+`" alt="" width="160px" height="90px" />
 					　　		<input type="file" id="headPortraitUpload3" style="margin-top:10px;">
 					    </div>
 	                </div>
